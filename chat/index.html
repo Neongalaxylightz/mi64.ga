@@ -10,7 +10,7 @@
 document.onload = function() {
   let txt = document.getElementById('textarea');
   let inp = document.getElementById('inp');
-var socket = new WebSocket('ws://public-ws.herokuapp.com/chat');
+var socket = new WebSocket('wss://public-ws.herokuapp.com/chat');
   socket.onmessage = function(){
 addChat(arguments[0].data);
 }
