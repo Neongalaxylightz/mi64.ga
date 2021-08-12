@@ -5,7 +5,7 @@
 </br>
 <textarea readonly type="text" style="height: 200px; width: 400px;" id="textarea"></textarea>
 </br>
-<input placeholder="Type Chat Here.." value="" id="inp"></input>
+<input placeholder="Type Chat Here.." value="" id="inp"></input><button id="send">Send</button>
 <script onload>
 document.onload = function() {
   let txt = document.getElementById('textarea');
@@ -30,6 +30,10 @@ if (e.keyCode==13){
 socket.send(inp.value);
 inp.value="";
 }
+}
+send.onclick = function(){
+socket.send(inp.value);
+inp.value="";
 }
   }
   function addChat(msg){
