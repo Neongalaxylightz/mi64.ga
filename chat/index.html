@@ -26,7 +26,7 @@ socket = new WebSocket('ws://public-ws.herokuapp.com/chat');
 addChat(arguments[0].data);
 }
 inp.onkeydown= function(e){
-if (e.keycode==13){
+if (e.keyCode==13){
 socket.send(inp.value);
 inp.value="";
 }
