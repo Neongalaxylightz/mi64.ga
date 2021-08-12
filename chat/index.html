@@ -1,0 +1,43 @@
+<!DOCTYPE html><html>
+<head><title>Test WS Chat!</title></head>
+<body>
+<button id="connect">Reconnect.</button>
+</br>
+<textarea readonly type="text" width="400" height="200" id="textarea"></textarea>
+</br>
+<input placeholder="Type Chat Here.." value="" id="inp"></input>
+<script onload>
+document.onload = function() {
+  let txt = document.getElementById('textarea');
+  let inp = document.getElementById('inp');
+var socket = new WebSocket('ws://public-ws.herokuapp.com/chat');
+  socket.onmessage = function(){
+addChat(arguments[0].data);
+}
+inp.onkeydown= function(e){
+if (e.keycode==13){
+socket.send(inp.value);
+inp.value="";
+}
+}
+function connect(){
+socket = new WebSocket('ws://public-ws.herokuapp.com/chat');
+  socket.onmessage = function(){
+addChat(arguments[0].data);
+}
+inp.onkeydown= function(e){
+if (e.keycode==13){
+socket.send(inp.value);
+inp.value="";
+}
+}
+  }
+  function addChat(msg){
+txt.innerText+=`\n\n${msg}`
+}
+  
+}
+document.onload();
+</script>
+</body>
+</html>
